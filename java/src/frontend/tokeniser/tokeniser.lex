@@ -13,7 +13,7 @@ import java.util.LinkedList;
 
 %class Tokeniser
 
-%unicode
+%unicode 
 %line
 %column
 
