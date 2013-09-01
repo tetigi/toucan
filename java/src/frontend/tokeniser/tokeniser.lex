@@ -11,7 +11,7 @@ import java.util.LinkedList;
 
 %%
 
-%class Tokeniser
+%class Tokeniser 
 
 %unicode 
 %line

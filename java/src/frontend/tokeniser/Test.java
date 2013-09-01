@@ -11,7 +11,6 @@ public class Test {
    */
   public static void main(final String[] args) {
     final String myString = "1 + 2 * 3";
-
     final ParserCup parser = new ParserCup(new Tokeniser(
         new java.io.StringReader(myString)));
     System.out.println("Parsing...");
