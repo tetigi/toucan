@@ -8,14 +8,10 @@ package frontend.tokeniser;
  */
 public class Token {
 
-  /**
-   * ID for this token.
-   */
+  // ID for this token
   public final int id;
 
-  /**
-   * Value of this token (if at all)
-   */
+  // Value of this token (if at all)
   public String val;
 
   /**
