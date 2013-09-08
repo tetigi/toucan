@@ -1,8 +1,8 @@
 package frontend.tokeniser;
 
 import java_cup.runtime.Symbol;
+import utils.UnorderedTree;
 import backend.interpreter.Interpreter;
-import frontend.parser.Node;
 import frontend.parser.ParserCup;
 
 public class Test {
@@ -18,8 +18,8 @@ public class Test {
     System.out.println("Parsing...");
     try {
       final Symbol s = parser.parse();
-      final Node n = (Node) s.value;
-      n.sayTree();
+      final UnorderedTree<Token> n = (UnorderedTree<Token>) s.value;
+      n.printTree();
       System.out.println(interpreter.evaluate(n));
     } catch (final Exception e) {
       // TODO Auto-generated catch block

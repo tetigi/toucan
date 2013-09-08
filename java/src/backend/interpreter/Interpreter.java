@@ -1,6 +1,7 @@
 package backend.interpreter;
 
-import frontend.parser.Node;
+import utils.Tree;
+import frontend.tokeniser.Token;
 
 public class Interpreter {
 
@@ -11,7 +12,7 @@ public class Interpreter {
    *          The tree to evaluate
    * @return The string output. Temporary.
    */
-  public String evaluate(final Node tree) {
+  public String evaluate(final Tree<Token> tree) {
     return "HAHA";
   }
 

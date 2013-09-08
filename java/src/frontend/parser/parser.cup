@@ -2,26 +2,27 @@ package frontend.parser;
 
 import java_cup.runtime.*;
 import frontend.tokeniser.Token;
+import utils.*;
 
 terminal Token PLUS, MINUS, DIVIDE, TIMES;
 terminal Token INTEGER_LITERAL;
 
-non terminal Node	expr, term, factor;
+non terminal UnorderedTree<Token>	expr, term, factor;
 
 expr    ::=     expr:e PLUS:plus term:t
-                {: RESULT = new Node(new Token(plus.val, plus.id), e, t); :}
+                {: RESULT = new UnorderedTree<Token>(new Token(plus.val, plus.id), e, t); :}
         |       expr:e MINUS:minus term:t
-                {: RESULT =  new Node(new Token(minus.val, minus.id), e, t); :}
+                {: RESULT =  new UnorderedTree<Token>(new Token(minus.val, minus.id), e, t); :}
         |       term:t
                 {: RESULT = t; :}
         ;
 term    ::=     term:t TIMES:times factor:f
-                {: RESULT = new Node(new Token(times.val, times.id), t, f); :}
+                {: RESULT = new UnorderedTree<Token>(new Token(times.val, times.id), t, f); :}
         |       term:t DIVIDE:divide factor:f
-                {: RESULT = new Node(new Token(divide.val, divide.id), t, f); :}
+                {: RESULT = new UnorderedTree<Token>(new Token(divide.val, divide.id), t, f); :}
         |       factor:f
                 {: RESULT = f; :}
         ;
 factor  ::=     INTEGER_LITERAL:i
-                {: RESULT = new Node(new Token(i.val, i.id)); :}
+                {: RESULT = new UnorderedTree<Token>(new Token(i.val, i.id)); :}
         ;
