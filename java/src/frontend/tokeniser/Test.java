@@ -22,7 +22,6 @@ public class Test {
       n.printTree();
       System.out.println(interpreter.evaluate(n));
     } catch (final Exception e) {
-      // TODO Auto-generated catch block
       e.printStackTrace();
     }
   }

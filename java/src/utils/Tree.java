@@ -6,6 +6,12 @@ public interface Tree<T> {
 
   public <U> Tree<U> transform(TreeTFunc<T, U> f);
 
+  public <U> Tree<U> depthFirstTransform(TreeNodeTFunc<T, U> f);
+  
+  public interface TreeNodeTFunc<T, U> {
+	  public Tree<U> transformTree(Tree<T> tree);
+  }
+  
   public interface TreeFunc<T> {
     public T mapFunction(T elem);
   }
@@ -23,4 +29,6 @@ public interface Tree<T> {
   public T getValue();
 
   public void setValue(T t);
+  
+  public boolean isLeaf();
 }
