@@ -7,6 +7,9 @@ import frontend.parser.ParserCup;
 
 public class Test {
 
+  // TODO Implement logging
+  // TODO Implement enum for types
+	
   /**
    * @param args
    */

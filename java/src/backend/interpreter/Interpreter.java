@@ -3,6 +3,7 @@ package backend.interpreter;
 import utils.Tree;
 import utils.Tree.TreeNodeTFunc;
 import utils.Tree.TreeTFunc;
+import utils.UnorderedTree;
 import frontend.tokeniser.Token;
 
 public class Interpreter {
@@ -25,12 +26,13 @@ public class Interpreter {
 
 	@Override
 	public Tree<TypeValue> transformTree(Tree<Token> elem) {
+		Tree<TypeValue> ret = new UnorderedTree<TypeValue>();
 		if (elem.isLeaf()) { // Terminal node
-			//TODO Convert token to type and value
+			ret.setValue(TypeFactory.getTypeFromToken(elem.getValue()));
 		} else { // Non-terminal node - op etc.
 			
 		}
-		return null;
+		return ret;
 	}
 	  
   }

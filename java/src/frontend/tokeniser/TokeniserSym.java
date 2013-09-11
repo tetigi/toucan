@@ -2,12 +2,12 @@ package frontend.tokeniser;
 
 public class TokeniserSym {
 
-  public static int INTEGER_LITERAL = 6;
-  public static int EQ = 1;
-  public static int PLUS = 2;
-  public static int MINUS = 3;
-  public static int TIMES = 4;
-  public static int DIVIDE = 5;
-  public static int EOF = 0;
+  public final static int INTEGER_LITERAL = 6;
+  public final static int EQ = 1;
+  public final static int PLUS = 2;
+  public final static int MINUS = 3;
+  public final static int TIMES = 4;
+  public final static int DIVIDE = 5;
+  public final static int EOF = 0;
 
 }

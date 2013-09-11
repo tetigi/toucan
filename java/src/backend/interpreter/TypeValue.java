@@ -3,25 +3,22 @@
  * 
  * Created on 10 Sep 2013
  * 
- * Last edited by: $Author: $
- *             on: $Date: $
+ * Last edited by: $Author: $ *             on: $Date: $
  *       Filename: $URL: $
  *       Revision: $Revision: $
  */
 package backend.interpreter;
 
+import frontend.tokeniser.Token;
+
 /**
  * @author ltomlin
  *
  */
-public class TypeValue {
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
+public interface TypeValue {
+	
+	String getRepr();
+	
+	void setFromToken(Token t);
+	
 }
