@@ -1,5 +1,7 @@
 package utils;
 
+import java.util.List;
+
 public interface Tree<T> {
 
   public void map(TreeFunc<T> f);
@@ -23,6 +25,10 @@ public interface Tree<T> {
   public void addChild(Tree<T> t);
 
   public Tree<T> getChild(int index);
+  
+  public List<Tree<T>> getChildren();
+  
+  public void addChildren(List<Tree<T>> children);
 
   public void printTree();
 

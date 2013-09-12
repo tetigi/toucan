@@ -7,7 +7,7 @@
  *       Filename: $URL: $
  *       Revision: $Revision: $
  */
-package backend.interpreter;
+package backend.interpreter.data;
 
 import frontend.tokeniser.Token;
 

@@ -1,6 +1,7 @@
 package utils;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class UnorderedTree<T> implements Tree<T> {
 
@@ -76,6 +77,19 @@ public class UnorderedTree<T> implements Tree<T> {
 	@Override
 	public <U> Tree<U> depthFirstTransform(utils.Tree.TreeNodeTFunc<T, U> f) {
 		return f.transformTree(this);
+	}
+
+	@Override
+	public List<Tree<T>> getChildren() {
+		return children;
+	}
+
+	/* (non-Javadoc)
+	 * @see utils.Tree#setChildren(java.util.List)
+	 */
+	@Override
+	public void addChildren(List<Tree<T>> children) {
+		this.children.addAll(children);
 	}
 
 }

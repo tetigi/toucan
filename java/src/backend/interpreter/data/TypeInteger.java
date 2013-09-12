@@ -8,7 +8,7 @@
  *       Filename: $URL: $
  *       Revision: $Revision: $
  */
-package backend.interpreter;
+package backend.interpreter.data;
 
 import javax.xml.bind.TypeConstraintException;
 
@@ -20,8 +20,22 @@ import frontend.tokeniser.TokeniserSym;
  */
 public class TypeInteger implements TypeValue {
 
-	Integer val;
+	private Integer val;
 	
+	public TypeInteger(Integer val) {
+		this.val = val;
+	}
+	
+	/**
+	 * 
+	 */
+	public TypeInteger() {
+	}
+
+	public Integer getVal() {
+		return val;
+	}
+
 	@Override
 	public String getRepr() {
 	
