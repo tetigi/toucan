@@ -1,15 +1,14 @@
 package backend.interpreter.data;
 
-import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
 import backend.interpreter.exceptions.NoSuchMethodForClassError;
 import backend.interpreter.exceptions.NoSuchMethodForTokenError;
 import backend.interpreter.typeclass.BaseTypeClass;
+import backend.interpreter.typeclass.EqClass;
 import backend.interpreter.typeclass.NumClass;
 import backend.interpreter.typeclass.ShowClass;
-import frontend.tokeniser.TokeniserSym;
 
 public class Context {
     Map<Integer, String> tokenToMethodMap = new HashMap<Integer, String>();
@@ -37,6 +36,10 @@ public class Context {
 	// ShowClass
 	ShowClass show = new ShowClass();
 	insertAllMethods(show);
+	
+	// EqClass
+	EqClass eq = new EqClass();
+	insertAllMethods(eq);
     }
 
     private void insertAllMethods(BaseTypeClass b) {

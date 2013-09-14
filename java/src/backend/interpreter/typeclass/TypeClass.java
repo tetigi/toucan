@@ -1,5 +1,5 @@
 package backend.interpreter.typeclass;
 
 public enum TypeClass {
-    Num, Show, Undefined
+    Num, Show, Undefined, Eq
 }

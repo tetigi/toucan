@@ -6,7 +6,7 @@ import frontend.tokeniser.Token;
 import frontend.tokeniser.TokeniserSym;
 import utils.*;
 
-terminal Token PLUS, MINUS, DIVIDE, TIMES;
+terminal Token EQ,PLUS, MINUS, DIVIDE, TIMES;
 terminal Token INTEGER_LITERAL;
 terminal Token IDENTIFIER;
 
@@ -23,6 +23,8 @@ term    ::=     term:t TIMES:times factor:f
                 {: RESULT = new UnorderedTree<Token>(new Token(times.val, TokeniserSym.IDENTIFIER), t, f); :}
         |       term:t DIVIDE:divide factor:f
                 {: RESULT = new UnorderedTree<Token>(new Token(divide.val, TokeniserSym.IDENTIFIER), t, f); :}
+        |       term:t EQ:eq factor:f
+                {: RESULT = new UnorderedTree<Token>(new Token(eq.val, TokeniserSym.IDENTIFIER), t, f); :}
         |       IDENTIFIER:id factor:f
                 {: RESULT = new UnorderedTree<Token>(new Token(id.val, TokeniserSym.IDENTIFIER), f); :}
         |       factor:f

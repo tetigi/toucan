@@ -15,8 +15,8 @@ import java.util.logging.Logger;
 import backend.interpreter.data.DataHInt;
 import backend.interpreter.data.DataType;
 import backend.interpreter.exceptions.TokenTypeNotFoundException;
+import frontend.parser.ParserSym;
 import frontend.tokeniser.Token;
-import frontend.tokeniser.TokeniserSym;
 
 /**
  * @author ltomlin
@@ -32,7 +32,7 @@ public class TypeFactory {
 	DataType v = null;
 
 	switch (t.id) {
-	case TokeniserSym.INTEGER_LITERAL:
+	case ParserSym.INTEGER_LITERAL:
 	    v = new DataHInt();
 	    v.setFromToken(t);
 	    break;

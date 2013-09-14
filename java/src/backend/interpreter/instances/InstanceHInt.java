@@ -1,19 +1,25 @@
 package backend.interpreter.instances;
 
 import java.util.List;
+import java.util.logging.Logger;
 
+import backend.interpreter.data.DataHBool;
 import backend.interpreter.data.DataHInt;
 import backend.interpreter.data.DataHString;
 import backend.interpreter.data.DataType;
+import backend.interpreter.typeclass.EqClass;
 import backend.interpreter.typeclass.NumClass;
 import backend.interpreter.typeclass.ShowClass;
 import backend.interpreter.typeclass.TypeClass;
 
 public class InstanceHInt extends Instance {
 
+    private static Logger LOGGER = Logger.getLogger(InstanceHInt.class.getName());
+    
     public InstanceHInt() {
 	classInstances.add(TypeClass.Num);
 	classInstances.add(TypeClass.Show);
+	classInstances.add(TypeClass.Eq);
     }
 
     @Override
@@ -53,14 +59,26 @@ public class InstanceHInt extends Instance {
 	case NumClass.FROM_INTEGER:
 	    return args.get(0);
 
-	    // SHOW CLASS
+	// SHOW CLASS
 	case ShowClass.SHOW:
 	    a = (DataHInt) args.get(0);
 
 	    return new DataHString(a.getData().toString());
+	
+	// EQ CLASS
+	case EqClass.EQ:
+	    a = (DataHInt) args.get(0);
+	    b = (DataHInt) args.get(1);
+	    
+	    return new DataHBool(a.getData() == b.getData());
+	case EqClass.NEQ:
+	    a = (DataHInt) args.get(0);
+	    b = (DataHInt) args.get(1);
+	    
+	    return new DataHBool(a.getData() != b.getData());
 	}
 
-	System.out.println("Could not run method " + method);
+	LOGGER.severe("Could not run method " + method + " in class Int");
 	return null;
     }
 }

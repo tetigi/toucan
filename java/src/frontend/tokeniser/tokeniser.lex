@@ -5,7 +5,8 @@ import java_cup.runtime.*;
 import java.io.IOException;
 
 import frontend.tokeniser.TokeniserSym;
-import static frontend.tokeniser.TokeniserSym.*;
+// import static frontend.tokeniser.TokeniserSym.*;
+import static frontend.parser.ParserSym.*;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -92,6 +93,7 @@ DecIntegerLiteral = 0 | -?[1-9][0-9]*
   "-"                            { return symbol(MINUS , createToken(yytext(), MINUS)); }
   "*"                            { return symbol(TIMES , createToken(yytext(), TIMES)); }
   "/"                            { return symbol(DIVIDE , createToken(yytext(), DIVIDE)); }
+  "=="                            { return symbol(EQ , createToken(yytext(), EQ)); }
   
   /* whitespace */
   {WhiteSpace}                   { /* ignore me*/ }
