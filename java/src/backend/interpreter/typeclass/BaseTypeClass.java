@@ -6,6 +6,9 @@ import java.util.Set;
 
 import backend.interpreter.data.Context;
 import backend.interpreter.data.DataType;
+import backend.interpreter.exceptions.ClassNotImplementedError;
+import backend.interpreter.exceptions.IncorrectArgLengthError;
+import backend.interpreter.exceptions.IncorrectTypeError;
 
 public abstract class BaseTypeClass {
     protected TypeClass thisClass = TypeClass.Undefined;
@@ -24,5 +27,6 @@ public abstract class BaseTypeClass {
     }
 
     public abstract DataType checkAndRun(Context c, String methodName,
-	    List<DataType> l);
+	    List<DataType> l) throws ClassNotImplementedError,
+	    IncorrectArgLengthError, IncorrectTypeError;
 }

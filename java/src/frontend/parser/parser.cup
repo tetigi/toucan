@@ -1,25 +1,30 @@
 package frontend.parser;
 
 import java_cup.runtime.*;
+import utils.UnorderedTree;
 import frontend.tokeniser.Token;
+import frontend.tokeniser.TokeniserSym;
 import utils.*;
 
 terminal Token PLUS, MINUS, DIVIDE, TIMES;
 terminal Token INTEGER_LITERAL;
+terminal Token IDENTIFIER;
 
 non terminal UnorderedTree<Token>	expr, term, factor;
 
 expr    ::=     expr:e PLUS:plus term:t
-                {: RESULT = new UnorderedTree<Token>(new Token(plus.val, plus.id), e, t); :}
+                {: RESULT = new UnorderedTree<Token>(new Token(plus.val, TokeniserSym.IDENTIFIER), e, t); :}
         |       expr:e MINUS:minus term:t
-                {: RESULT =  new UnorderedTree<Token>(new Token(minus.val, minus.id), e, t); :}
+                {: RESULT =  new UnorderedTree<Token>(new Token(minus.val, TokeniserSym.IDENTIFIER), e, t); :}
         |       term:t
                 {: RESULT = t; :}
         ;
 term    ::=     term:t TIMES:times factor:f
-                {: RESULT = new UnorderedTree<Token>(new Token(times.val, times.id), t, f); :}
+                {: RESULT = new UnorderedTree<Token>(new Token(times.val, TokeniserSym.IDENTIFIER), t, f); :}
         |       term:t DIVIDE:divide factor:f
-                {: RESULT = new UnorderedTree<Token>(new Token(divide.val, divide.id), t, f); :}
+                {: RESULT = new UnorderedTree<Token>(new Token(divide.val, TokeniserSym.IDENTIFIER), t, f); :}
+        |       IDENTIFIER:id factor:f
+                {: RESULT = new UnorderedTree<Token>(new Token(id.val, TokeniserSym.IDENTIFIER), f); :}
         |       factor:f
                 {: RESULT = f; :}
         ;

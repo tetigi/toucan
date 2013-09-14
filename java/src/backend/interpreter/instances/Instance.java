@@ -1,9 +1,10 @@
-package backend.interpreter.data;
+package backend.interpreter.instances;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import backend.interpreter.data.DataType;
 import backend.interpreter.typeclass.TypeClass;
 
 public abstract class Instance {

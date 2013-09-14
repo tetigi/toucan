@@ -1,5 +1,6 @@
 package backend.interpreter.data;
 
+import backend.interpreter.instances.Instance;
 import frontend.tokeniser.Token;
 
 public abstract class DataType {

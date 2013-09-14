@@ -70,7 +70,9 @@ import java.util.LinkedList;
 LineTerminator = \r|\n|\r\n
 WhiteSpace     = {LineTerminator} | [ \t\f]
 
-DecIntegerLiteral = 0 | [1-9][0-9]*
+Identifier = [:jletter:] [:jletterdigit:]*
+
+DecIntegerLiteral = 0 | -?[1-9][0-9]*
 
 
 %state STRING
@@ -78,6 +80,9 @@ DecIntegerLiteral = 0 | [1-9][0-9]*
 %%
 
 <YYINITIAL> {
+ 
+ /* identifiers */ 
+  {Identifier}                   { return symbol(IDENTIFIER, createToken(yytext(), IDENTIFIER)); }
  
   /* literals */
   {DecIntegerLiteral}            { return symbol(INTEGER_LITERAL, createToken(yytext(), INTEGER_LITERAL)); }
@@ -87,7 +92,7 @@ DecIntegerLiteral = 0 | [1-9][0-9]*
   "-"                            { return symbol(MINUS , createToken(yytext(), MINUS)); }
   "*"                            { return symbol(TIMES , createToken(yytext(), TIMES)); }
   "/"                            { return symbol(DIVIDE , createToken(yytext(), DIVIDE)); }
- 
+  
   /* whitespace */
   {WhiteSpace}                   { /* ignore me*/ }
   

@@ -4,6 +4,8 @@ import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
+import backend.interpreter.exceptions.NoSuchMethodForClassError;
+import backend.interpreter.exceptions.NoSuchMethodForTokenError;
 import backend.interpreter.typeclass.BaseTypeClass;
 import backend.interpreter.typeclass.NumClass;
 import backend.interpreter.typeclass.ShowClass;
@@ -15,6 +17,7 @@ public class Context {
 
     public void init() {
 	// Add tokens REFLECTION DUN DUN DUUUUN
+	/* Not really needed anymore :( Will keep for future reference.
 	Field[] fields = TokeniserSym.class.getFields();
 	for (Field f : fields) {
 	    try {
@@ -23,7 +26,7 @@ public class Context {
 		System.out.println("Couldn't get fields during initiation.");
 		e.printStackTrace();
 	    }
-	}
+	} */
 
 	// Add classes
 
@@ -41,12 +44,23 @@ public class Context {
 	    methodToClassMap.put(method, b);
     }
 
-    public String getAssocMethod(Integer id) {
-	return tokenToMethodMap.get(id);
+    public String getAssocMethod(Integer id) throws NoSuchMethodForTokenError {
+	if (tokenToMethodMap.containsKey(id)) {
+	    return tokenToMethodMap.get(id);
+	} else {
+	    throw new NoSuchMethodForTokenError(
+		    "Could not find method for token id: " + id);
+	}
     }
 
-    public BaseTypeClass getAssocTypeClass(String methodName) {
-	return methodToClassMap.get(methodName);
+    public BaseTypeClass getAssocTypeClass(String methodName)
+	    throws NoSuchMethodForClassError {
+	if (methodToClassMap.containsKey(methodName)) {
+	    return methodToClassMap.get(methodName);
+	} else {
+	    throw new NoSuchMethodForClassError(
+		    "Could not find class for method " + methodName);
+	}
     }
 
 }

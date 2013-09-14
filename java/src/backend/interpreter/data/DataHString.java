@@ -1,5 +1,6 @@
 package backend.interpreter.data;
 
+import backend.interpreter.instances.InstanceHString;
 import frontend.tokeniser.Token;
 
 public class DataHString extends DataType {
