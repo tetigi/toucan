@@ -80,13 +80,13 @@ DecIntegerLiteral = 0 | [1-9][0-9]*
 <YYINITIAL> {
  
   /* literals */
-  {DecIntegerLiteral}            { return symbol(INTEGER_LITERAL, createToken(yytext(), yycolumn)); }
+  {DecIntegerLiteral}            { return symbol(INTEGER_LITERAL, createToken(yytext(), INTEGER_LITERAL)); }
 
   /* operators */
-  "+"                            { return symbol(PLUS , createToken(yytext(), yycolumn)); }
-  "-"                            { return symbol(MINUS , createToken(yytext(), yycolumn)); }
-  "*"                            { return symbol(TIMES , createToken(yytext(), yycolumn)); }
-  "/"                            { return symbol(DIVIDE , createToken(yytext(), yycolumn)); }
+  "+"                            { return symbol(PLUS , createToken(yytext(), PLUS)); }
+  "-"                            { return symbol(MINUS , createToken(yytext(), MINUS)); }
+  "*"                            { return symbol(TIMES , createToken(yytext(), TIMES)); }
+  "/"                            { return symbol(DIVIDE , createToken(yytext(), DIVIDE)); }
  
   /* whitespace */
   {WhiteSpace}                   { /* ignore me*/ }

@@ -18,21 +18,22 @@ import frontend.tokeniser.TokeniserSym;
  * 
  */
 public class TypeFactory {
-	public static TypeValue getTypeFromToken(Token t) {
-		TypeValue v = null;
-		switch (t.id) {
-		case TokeniserSym.INTEGER_LITERAL:
-			v = new TypeInteger();
-			v.setFromToken(t);
-			break;
-		default:
-			System.out.println("Unknown type for token " + t);
-			
-			//TODO Throw some sort of exception
-			//TODO Add log here
-		}
+    public static DataType getTypeFromToken(Token t) {
+	DataType v = null;
+	// System.out.println("Typing token " + t);
+	switch (t.id) {
+	case TokeniserSym.INTEGER_LITERAL:
+	    v = new DataHInt();
+	    v.setFromToken(t);
+	    break;
+	default:
+	    System.out.println("Unknown type for token " + t);
 
-		return v;
-
+	    // TODO Throw some sort of exception
+	    // TODO Add log here
 	}
+
+	return v;
+
+    }
 }
