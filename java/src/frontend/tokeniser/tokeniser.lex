@@ -31,29 +31,8 @@ import java.util.LinkedList;
 %init}
 
 %{
-	private Symbol symbol(int type)
-	{
-		return symbol(type, yytext());
-	}
-
-	private Symbol sym(int type, Object value)
-	{
-		return new Symbol(type, yyline, yycolumn, value);
-	}
-
-	private void error()
-	throws IOException
-	{
-		throw new IOException("illegal text at line = "+yyline+", column = "+yycolumn+", text = '"+yytext()+"'");
-	}
-
     private Token createToken(final String val, final int start) {
         final Token tk = new Token(val, start);
-        addToken(tk);
-        return tk;
-    }
-    private Token createToken(final int start) {
-        final Token tk = new Token(start);
         addToken(tk);
         return tk;
     }

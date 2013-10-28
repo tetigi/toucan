@@ -16,7 +16,7 @@ public class Test {
      */
     public static void main(final String[] args) {
 	//final String myString = "4 * 3 + negate 2";
-	final String myString = "1 == 1";
+	final String myString = "1 + 1";
 	final Interpreter interpreter = new Interpreter();
 	final ParserCup parser = new ParserCup(new Tokeniser(
 		new java.io.StringReader(myString)));
