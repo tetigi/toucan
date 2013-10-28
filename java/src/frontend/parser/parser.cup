@@ -9,6 +9,7 @@ import utils.*;
 terminal Token EQ,PLUS, MINUS, DIVIDE, TIMES;
 terminal Token INTEGER_LITERAL;
 terminal Token IDENTIFIER;
+terminal Token OPARENS, CPARENS;
 
 non terminal UnorderedTree<Token>	expr, term, factor;
 
@@ -32,4 +33,6 @@ term    ::=     term:t TIMES:times factor:f
         ;
 factor  ::=     INTEGER_LITERAL:i
                 {: RESULT = new UnorderedTree<Token>(new Token(i.val, i.id)); :}
+        |       OPARENS:open expr:e CPARENS:close
+                {: RESULT = e; :}
         ;

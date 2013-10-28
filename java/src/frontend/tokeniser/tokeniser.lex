@@ -74,6 +74,9 @@ DecIntegerLiteral = 0 | -?[1-9][0-9]*
   "/"                            { return symbol(DIVIDE , createToken(yytext(), DIVIDE)); }
   "=="                            { return symbol(EQ , createToken(yytext(), EQ)); }
   
+  /* parens */
+  "("                            { return symbol(OPARENS, createToken(yytext(), OPARENS)); }
+  ")"                            { return symbol(CPARENS, createToken(yytext(), CPARENS)); }
   /* whitespace */
   {WhiteSpace}                   { /* ignore me*/ }
   
