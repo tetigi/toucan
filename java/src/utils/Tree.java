@@ -27,6 +27,8 @@ public interface Tree<T> {
     public Tree<T> getChild(int index);
 
     public List<Tree<T>> getChildren();
+    
+    public void setChildren(List<Tree<T>> children);
 
     public void addChildren(List<Tree<T>> children);
 

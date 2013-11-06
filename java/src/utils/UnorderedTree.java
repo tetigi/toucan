@@ -48,10 +48,10 @@ public class UnorderedTree<T> implements Tree<T> {
 
     @Override
     public void printTree() {
+	System.out.println(value);
 	for (final Tree<T> t : children) {
 	    t.printTree();
 	}
-	System.out.println(value);
     }
 
     @Override
@@ -92,6 +92,12 @@ public class UnorderedTree<T> implements Tree<T> {
     @Override
     public List<Tree<T>> getChildren() {
 	return children;
+    }
+    
+    @Override
+    public void setChildren(List<Tree<T>> children) {
+	this.children.clear();
+	this.children.addAll(children);
     }
 
     /*

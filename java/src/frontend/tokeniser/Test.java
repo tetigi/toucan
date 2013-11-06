@@ -16,7 +16,7 @@ public class Test {
      */
     public static void main(final String[] args) {
 	//final String myString = "4 * 3 + negate 2";
-	final String myString = "(3 - 2) - 3";
+	final String myString = "abs (3 - 1000)";
 	final Interpreter interpreter = new Interpreter();
 	final Tokeniser tokeniser = new Tokeniser(new java.io.StringReader(myString));
 	final ParserCup parser = new ParserCup(new Tokeniser(
@@ -29,7 +29,7 @@ public class Test {
 	    final Symbol s = parser.debug_parse();
 	    @SuppressWarnings("unchecked")
 	    final UnorderedTree<Token> n = (UnorderedTree<Token>) s.value;
-
+	    n.printTree();
 	    System.out.println("The result of " + myString + " is ");
 	    System.out.println(interpreter.evaluate(n));
 	} catch (final Exception e) {
